@@ -35,7 +35,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ route('projects.index') }}">Projects</a></li>
+                        <li><a href="{{ route('event_types.index') }}">Event types</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
