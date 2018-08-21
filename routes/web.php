@@ -41,3 +41,6 @@ Route::resource('event_types', 'EventTypeController')->only(['index', 'store', '
 
 // Events
 Route::resource('projects.events', 'EventController')->except(['destroy']);
+
+// User action logs
+Route::get('action_logs', 'ActionLogController@index')->name('action_logs');

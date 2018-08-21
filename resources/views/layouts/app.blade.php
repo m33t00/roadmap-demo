@@ -37,6 +37,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('projects.index') }}">Projects</a></li>
                         <li><a href="{{ route('event_types.index') }}">Event types</a></li>
+                        <li><a href="{{ route('action_logs') }}">User actions log</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

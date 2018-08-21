@@ -15,13 +15,12 @@ class CreateActionLogsTable extends Migration
     {
         Schema::create('action_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('event_id');
             $table->unsignedInteger('user_id');
-            $table->string('reason', 255);
+            $table->string('entity_alias');
+            $table->unsignedInteger('entity_id');
             $table->string('action_alias');
+            $table->text('diff_text')->nullable();
             $table->timestamps();
-
-            $table->foreign('event_id')->references('id')->on('events');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

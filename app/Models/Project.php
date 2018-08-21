@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Project extends Model
+class Project extends Model implements LoggableEntityInterface
 {
+    const ENTITY_NAME = 'Project';
+
     protected $fillable = [
         'title', 'description'
     ];
@@ -47,11 +49,21 @@ class Project extends Model
 
     public function isUserCanRead(User $user): bool
     {
-        return $this->usersCanRead->contains($user);
+        return $this->user_id === $user->id or $this->usersCanRead->contains($user);
     }
 
     public function isUserCanUpdate(User $user): bool
     {
-        return $this->usersCanUpdate->contains($user);
+        return $this->user_id === $user->id or $this->usersCanUpdate->contains($user);
+    }
+
+    public function getEntityID(): int
+    {
+        return $this->id;
+    }
+
+    public function getEntityName(): string
+    {
+        return self::ENTITY_NAME;
     }
 }

@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
-class Event extends Model
+class Event extends Model implements LoggableEntityInterface
 {
-    use SoftDeletes;
+    use SoftDeletes, Notifiable;
+
+    const ENTITY_NAME = 'Event';
 
     protected $fillable = [
         'project_id',
@@ -32,5 +35,15 @@ class Event extends Model
     public function event_type()
     {
         return $this->belongsTo(EventType::class);
+    }
+
+    public function getEntityID(): int
+    {
+        return $this->id;
+    }
+
+    public function getEntityName(): string
+    {
+        return self::ENTITY_NAME;
     }
 }
