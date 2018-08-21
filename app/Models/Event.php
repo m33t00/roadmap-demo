@@ -32,7 +32,7 @@ class Event extends Model implements LoggableEntityInterface
         return $this->belongsTo(Project::class);
     }
 
-    public function event_type()
+    public function eventType()
     {
         return $this->belongsTo(EventType::class);
     }

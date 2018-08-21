@@ -1,0 +1,49 @@
+table td.events-cell {
+    height: 75px !important;
+}
+
+table td.has-events {
+    background-color: #dff0d8;
+}
+
+table td.roadmap-project-title {
+    width: 200px;
+}
+
+table.roadmap-table {
+    margin-left: -100px;
+}
+
+.roadmap-table a.roadmap-add-new-event {
+    float: left;
+}
+.roadmap-paginate {
+    margin-left: -45px;
+    margin-right: 55px;
+    height: 25px;
+}
+
+.roadmap-paginate a {
+    font-size: large;
+}
+.roadmap-paginate a.previous {
+    float: left;
+}
+
+.roadmap-paginate a.next {
+    float: right;
+}
+.roadmap .add-event-link {
+    font-size: small;
+}
+
+.roadmap .project-title {
+    font-size: large;
+}
+
+.event-chande-reason {
+    color: #090909;
+}
+.event-deleted {
+    color: #8b554e;
+}

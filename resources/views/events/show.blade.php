@@ -5,7 +5,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel panel-heading">
-                    {{$project->title}}: {{$event->event_type->title}} ({{$event->date}})
+                    {{$project->title}}: {{$event->eventType->title}} ({{$event->date->toDateString()}})
                 </div>
                 <div class="panel-body">
                     <p>
@@ -14,6 +14,11 @@
                     <p>
                         {{$event->description}}
                     </p>
+                    @if($event->last_update_reason)
+                        <p>
+                        Update reason: {{$event->last_update_reason}}
+                        </p>
+                    @endif
                     <hr>
                     <a
                         href="{{route('projects.events.edit', [$project, $event])}}"

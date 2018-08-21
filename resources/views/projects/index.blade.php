@@ -9,8 +9,18 @@
             </div>
             <div class="panel-body">
                 @foreach($projects as $project)
-                    <h4>{{$project->title}}</h4>
-                    <p>{{$project->description}}</p>
+                    <h4>
+                        @can('view', $project)
+                            <a href="{{route('projects.show', $project)}}">{{$project->title}}</a>
+                        @else
+                            {{$project->title}}
+                        @endcan
+                    </h4>
+                    @can('view', $project)
+                        <p>{{$project->description}}</p>
+                    @else
+                        <p><em>(access denied)</em></p>
+                    @endcan
                     <hr>
                 @endforeach
 

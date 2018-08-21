@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 class Project extends Model implements LoggableEntityInterface
 {
@@ -65,5 +66,27 @@ class Project extends Model implements LoggableEntityInterface
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
+    }
+
+    public function getEventsInMonthGroupedByWeek(Carbon $date)
+    {
+        $events = $this->events()->whereBetween(
+            'date',
+            [(clone $date)->startOfMonth(), (clone $date)->endOfMonth()]
+        )->get();
+
+        $weekNumbers = array_fill(1, (clone $date)->endOfMonth()->weekOfMonth, []);
+
+        $eventsGroupedByWeekNumber = array_reduce(
+            $events->all(),
+            function ($result, $event) {
+                $result[$event->date->weekNumberInMonth][] = $event;
+                return $result;
+            },
+            []
+        );
+
+        return array_replace($weekNumbers, $eventsGroupedByWeekNumber);
+
     }
 }
