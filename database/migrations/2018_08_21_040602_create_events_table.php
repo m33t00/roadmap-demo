@@ -20,8 +20,10 @@ class CreateEventsTable extends Migration
             $table->date('date');
             $table->string('short_description', 255);
             $table->text('description');
-            $table->boolean('is_completed');
+            $table->boolean('is_completed')->default(false);
+            $table->string('last_update_reason', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('event_type_id')->references('id')->on('event_types');
             $table->foreign('project_id')->references('id')->on('projects');

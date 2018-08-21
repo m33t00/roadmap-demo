@@ -12,9 +12,13 @@
                     {{$project->description}}
                 </p>
                 <hr>
-                <h4>
-                    Events
-                </h4>
+                @if ($project->events->count())
+                    <h5>
+                        <a href="{{route('projects.events.index', $project)}}">
+                            {{$project->events->count()}} {{str_plural('event', $project->events->count())}}
+                        </a>
+                    </h5>
+                @endif
             </div>
         </div>
     </div>

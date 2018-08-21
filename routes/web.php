@@ -27,3 +27,4 @@ Route::post('register', 'Auth\RegisterController@register');
 // Projects
 Route::resource('projects', 'ProjectController')->except(['destroy']);
 Route::resource('event_types', 'EventTypeController')->only(['index', 'store', 'create']);
+Route::resource('projects.events', 'EventController');
