@@ -16,8 +16,8 @@
                     </p>
                     <hr>
                     <a
-                            href="{{route('projects.events.edit', [$project, $event])}}"
-                            class="btn btn-primary"
+                        href="{{route('projects.events.edit', [$project, $event])}}"
+                        class="btn btn-primary"
                     >Update event</a>
                 </div>
             </div>

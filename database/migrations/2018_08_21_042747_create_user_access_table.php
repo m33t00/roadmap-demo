@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAclTable extends Migration
+class CreateUserAccessTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAclTable extends Migration
      */
     public function up()
     {
-        Schema::create('acl', function (Blueprint $table) {
+        Schema::create('user_access', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('project_id');
-            $table->integer('access_flags');
+            $table->boolean('can_read')->default(false);
+            $table->boolean('can_update')->default(false);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');

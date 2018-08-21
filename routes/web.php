@@ -26,5 +26,18 @@ Route::post('register', 'Auth\RegisterController@register');
 
 // Projects
 Route::resource('projects', 'ProjectController')->except(['destroy']);
+
+// User Access
+Route::get('projects/{project}/user_access', 'ProjectController@showUserAccess')
+    ->name('projects.user_access.index');
+Route::get('projects/{project}/user_access/{user}', 'ProjectController@editUserAccess')
+    ->name('projects.user_access.edit');
+
+Route::post('projects/{project}/user_access/{user}', 'ProjectController@updateUserAccess')
+    ->name('projects.user_access.update');
+
+// Event types
 Route::resource('event_types', 'EventTypeController')->only(['index', 'store', 'create']);
-Route::resource('projects.events', 'EventController');
+
+// Events
+Route::resource('projects.events', 'EventController')->except(['destroy']);

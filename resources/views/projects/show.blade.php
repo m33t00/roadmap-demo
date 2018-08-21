@@ -19,6 +19,10 @@
                         </a>
                     </h5>
                 @endif
+                <a
+                    href="{{route('projects.user_access.index', $project)}}"
+                    class="btn btn-primary"
+                >Manage user access</a>
             </div>
         </div>
     </div>
